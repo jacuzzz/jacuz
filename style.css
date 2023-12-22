@@ -280,13 +280,13 @@ font-family: Caviar-Bold;
 .sociale{
 border-top: 1px solid #fff;
 border-bottom: 1px solid #fff;
-display: inline-flex;
+display: flex;
 align-items: center;
+justify-content: center;
 margin-left: 0vw;
 margin-right: 0vw;
 background-color: #181818;
 width: 100vw;
-padding-left: 30vw;
 }
 .facebook{
 padding-right: 2vw;
