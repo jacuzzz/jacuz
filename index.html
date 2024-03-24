@@ -23,15 +23,33 @@
         font-size: 3em;
         font-weight: bold;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        a:link{
+            color: #fff;
+            text-decoration: none;
+        }
+        a:visited{
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: none;
+            color: #fff;
+        }
+        a:active{
+            text-decoration: none;
+            color: #fff;
+        }
     }
 
     #godzina {
         font-size: 4em;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        border: 2px solid #fff;
         padding: 10px 20px;
-        border-radius: 10px;
+        border: 2px solid;
+        border-radius: 25px; /* Zaokrąglenie obramowania */
         margin-top: 20px;
+        border-image: linear-gradient(to right, #ff6b6b, #556270);
+        border-image-slice: 1;
     }
 
     .ikony {
@@ -43,17 +61,20 @@
         text-decoration: none;
         margin: 0 10px;
         font-size: 2em;
+        display: inline-block;
+        transition: opacity 0.3s; /* Dodanie przejścia dla efektu zanikania */
+        border: 2px solid transparent;
+        border-radius: 50%;
+        padding: 5px;
     }
 
-    .ikony i {
-        border: 2px solid #fff;
-        padding: 10px;
-        border-radius: 50%;
+    .ikony a:hover {
+        opacity: 0.5; /* Zmniejszenie przezroczystości po najechaniu myszką */
     }
 </style>
 </head>
 <body>
-    <div id="jacuz">Jacuz</div>
+    <div id="jacuz"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Jacuz</a></div>
 
     <div id="godzina"></div>
 
