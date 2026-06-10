@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WWW | © Jacek Bryliński</title>
-    <link rel="icon" type="image/x-icon" href="moon..png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -177,6 +176,8 @@
     </div>
 
     <script>
+        const PING_OFFSET = 30;
+
         window.onload = () => {
             tick();
             setInterval(tick, 1000);
@@ -253,15 +254,17 @@
             p.textContent = "Test…";
 
             try {
+                await fetch('https://speed.cloudflare.com/__down?bytes=1', { cache: 'no-store' });
+                
                 const arr = [];
                 for (let i = 0; i < 5; i++) {
                     const t0 = performance.now();
-                    await fetch('https://speed.cloudflare.com/__down?bytes=1', { cache: 'no-cache' });
+                    await fetch(`https://speed.cloudflare.com/__down?bytes=1&r=${Math.random()}`, { cache: 'no-store' });
                     arr.push(performance.now() - t0);
                     await new Promise(r => setTimeout(r, 100));
                 }
 
-                const min = Math.round(Math.min(...arr));
+                const min = Math.max(1, Math.round(Math.min(...arr) - PING_OFFSET));
                 const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
                 const jitVal = Math.round(arr.reduce((a, b) => a + Math.abs(b - avg), 0) / arr.length);
 
