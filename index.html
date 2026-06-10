@@ -3,103 +3,281 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Strona JacuzWeb" />
+    <title>WWW | © Jacek Bryliński</title>
     <link rel="icon" type="image/x-icon" href="moon..png" />
-    <meta name="keywords" content="jacuz, jacuzweb, jacek bryliński, strona internetowa, jacuz web, jacuz strona" />
-    <meta name="author" content="Jacek Bryliński" />
-    <title>WWW | &copy; Jacek Bryliński</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background-color: #06060e;
+            background-image:
+                radial-gradient(ellipse 55% 45% at 10% 15%, rgba(100, 40, 240, 0.18) 0%, transparent 65%),
+                radial-gradient(ellipse 45% 40% at 88% 80%, rgba(30, 70, 210, 0.13) 0%, transparent 60%);
+            color: #f0f0f8;
+            font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+            gap: 22px;
+            padding: 30px 20px;
         }
+
         #jacuz {
-            font-size: 3em;
-            font-weight: bold;
-            text-shadow: 0px 0px 30px #FFF;
-            margin-top: 20px;
-        }
-        a:link, a:visited, a:hover, a:active {
+            font-size: 3.8em;
+            font-weight: 700;
+            letter-spacing: 8px;
+            text-transform: uppercase;
             color: #fff;
-            text-decoration: none;
+            text-shadow: 0 0 50px rgb(255, 255, 255);
         }
-        #godzina {
-            font-size: 4em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            border: 2px solid;
-            border-radius: 25px;
-            margin-top: 20px;
-            transition: color 0.5s;
+
+        #clk {
+            font-size: 4.4em;
+            font-weight: 300;
+            letter-spacing: 10px;
+            padding: 14px 38px;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: color 0.9s ease;
+            font-variant-numeric: tabular-nums;
         }
-        .ikony {
-            margin-top: 10px;
-        }
-        .ikony a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 2em;
-            display: inline-block;
-            transition: opacity 0.3s;
-            border: 2px solid transparent;
+
+        .sociale { display: flex; gap: 8px; }
+
+        .sociale a {
+            color: rgba(255, 255, 255, 0.60);
+            font-size: 1.45em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 50%;
-            padding: 5px;
+            transition: color 0.22s ease, background 0.22s ease,
+                        border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+            background: rgba(255, 255, 255, 0.04);
+            text-decoration: none;
         }
-        .ikony a:hover {
-            opacity: 0.5;
+
+        .sociale a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.11);
+            border-color: rgba(255, 255, 255, 0.32);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+        }
+
+        #stBox {
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            border-radius: 22px;
+            padding: 20px 28px 26px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            min-width: 340px;
+        }
+
+        .stTop {
+            text-align: center;
+            font-size: 0.66em;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        #stMid {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stEl {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        .stEl + .stEl { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+
+        .stEl i { font-size: 1.1em; color: rgba(255, 255, 255, 0.40); margin-bottom: 1px; }
+
+        .v {
+            font-size: 1.2em;
+            font-weight: 600;
+            min-width: 78px;
+            text-align: center;
+            transition: color 0.35s ease;
+            color: rgba(255, 255, 255, 0.70);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .lbl {
+            font-size: 0.58em;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.28);
+            font-weight: 500;
+        }
+
+        @media (max-width: 480px) {
+            #jacuz { font-size: 2.8em; letter-spacing: 6px; }
+            #clk  { font-size: 3em;   letter-spacing: 6px; padding: 12px 26px; }
+            #stBox { min-width: unset; width: 100%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; }
         }
     </style>
 </head>
 <body>
-    <div id="jacuz">
-        Jacuz
+    <div id="h">Jacuz</div>
+    <div id="clk"></div>
+
+    <div class="sociale">
+        <a href="https://www.instagram.com/rexiuyoyo/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/rexiu03" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://discordapp.com/users/969578122930421790" target="_blank" rel="noopener" title="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://www.snapchat.com/add/rexiuyoyo" target="_blank" rel="noopener" title="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+        <a href="https://open.spotify.com/artist/6bMhQ6nPjHaC8smJGS1TKT?si=1J_vK4l9TGKXKF031RWpYA" target="_blank" rel="noopener" title="Spotify"><i class="fab fa-spotify"></i></a>
     </div>
-    <div id="godzina"></div>
-    <div class="ikony">
-        <a href="https://www.instagram.com/rexiuyoyo/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/rexiu03" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://discordapp.com/users/969578122930421790" target="_blank"><i class="fab fa-discord"></i></a>
-        <a href="https://www.snapchat.com/add/rexiuyoyo" target="_blank"><i class="fab fa-snapchat"></i></a>
-        <a href="https://open.spotify.com/artist/6bMhQ6nPjHaC8smJGS1TKT?si=1J_vK4l9TGKXKF031RWpYA" target="_blank"><i class="fab fa-spotify"></i></a>
+
+    <div id="stBox">
+        <div class="stTop">Prędkość Twojego Internetu</div>
+        <div id="stMid">
+            <div class="stEl">
+                <i class="fas fa-signal"></i>
+                <span id="ping" class="v">-- ms</span>
+                <span class="lbl">Ping</span>
+            </div>
+            <div class="stEl">
+                <i class="fas fa-arrow-down"></i>
+                <span id="dl" class="v">-- Mbps</span>
+                <span class="lbl">Pobieranie</span>
+            </div>
+            <div class="stEl">
+                <i class="fas fa-wave-square"></i>
+                <span id="jit" class="v">-- ms</span>
+                <span class="lbl">Jitter</span>
+            </div>
+        </div>
     </div>
+
     <script>
-        window.onload = function () {
-            aktualizujGodzine();
-            setInterval(aktualizujGodzine, 1000);
+        window.onload = () => {
+            tick();
+            setInterval(tick, 1000);
+            setTimeout(st, 800);
         };
-        function aktualizujGodzine() {
-            var teraz = new Date();
-            var godzina = teraz.getHours();
-            var minuta = teraz.getMinutes();
-            var sekunda = teraz.getSeconds();
-            godzina = sprawdzJednostki(godzina);
-            minuta = sprawdzJednostki(minuta);
-            sekunda = sprawdzJednostki(sekunda);
-            var godzinaElement = document.getElementById("godzina");
-            godzinaElement.textContent = godzina + ":" + minuta + ":" + sekunda;
-            godzinaElement.style.color = losujKolor();
+
+        function tick() {
+            const d = new Date();
+            const c = document.getElementById("clk");
+            
+            c.textContent =
+                ("0" + d.getHours()).slice(-2) + ":" +
+                ("0" + d.getMinutes()).slice(-2) + ":" +
+                ("0" + d.getSeconds()).slice(-2);
+                
+            const h = (d.getSeconds() * 3) % 360;
+            c.style.color = `hsl(${h}, 78%, 72%)`;
         }
-        function sprawdzJednostki(jednostka) {
-            if (jednostka < 10) {
-                return "0" + jednostka;
-            } else {
-                return jednostka;
+
+        function cDl(mbps, e) {
+            if (mbps < 10) { e.style.color = "#f87171"; } 
+            else if (mbps < 20) { e.style.color = "#fb923c"; } 
+            else if (mbps < 50) { e.style.color = "#4ade80"; } 
+            else {
+                e.style.color = "#fbbf24";
+                e.style.textShadow = "0 0 8px rgb(251, 191, 36)";
+            }                
+        }
+
+        function cMs(ms, e) {
+            if (ms < 20) {
+                e.style.color = "#fbbf24";
+                e.style.textShadow = "0 0 8px rgb(251, 191, 36)";
+            } else if (ms < 60) { e.style.color = "#4ade80"; } 
+            else if (ms < 120) { e.style.color = "#fb923c"; } 
+            else { e.style.color = "#f87171"; }
+        }
+
+        function getDl(e) {
+            return new Promise(res => {
+                const b = 10 * 1024 * 1024;
+                const x = new XMLHttpRequest();
+                x.open('GET', `https://speed.cloudflare.com/__down?bytes=${b}`, true);
+                
+                const t0 = performance.now();
+
+                x.onprogress = (ev) => {
+                    const s = (performance.now() - t0) / 1000;
+                    if (s > 0.4 && ev.loaded > 0) {
+                        const spd = (ev.loaded * 8) / s / (1024 * 1024);
+                        e.textContent = spd.toFixed(1) + " Mbps";
+                        cDl(spd, e);
+                    }
+                };
+
+                x.onload = () => {
+                    const s = (performance.now() - t0) / 1000;
+                    const fSpd = (b * 8) / s / (1024 * 1024);
+                    e.textContent = fSpd.toFixed(2) + " Mbps";
+                    cDl(fSpd, e);
+                    res();
+                };
+
+                x.onerror = () => { e.textContent = "Err"; res(); };
+                x.send();
+            });
+        }
+
+        async function st() {
+            const p = document.getElementById('ping');
+            const d = document.getElementById('dl');
+            const j = document.getElementById('jit');
+
+            p.textContent = "Test…";
+
+            try {
+                const arr = [];
+                for (let i = 0; i < 5; i++) {
+                    const t0 = performance.now();
+                    await fetch('https://speed.cloudflare.com/__down?bytes=1', { cache: 'no-cache' });
+                    arr.push(performance.now() - t0);
+                    await new Promise(r => setTimeout(r, 100));
+                }
+
+                const min = Math.round(Math.min(...arr));
+                const avg = arr.reduce((a, b) => a + b, 0) / arr.length;
+                const jitVal = Math.round(arr.reduce((a, b) => a + Math.abs(b - avg), 0) / arr.length);
+
+                p.textContent = min + " ms";
+                cMs(min, p);
+
+                j.textContent = jitVal + " ms";
+                cMs(jitVal, j);
+
+            } catch {
+                p.textContent = "Err";
+                j.textContent = "Err";
             }
-        }
-        function losujKolor() {
-            var r = Math.floor(Math.random() * 256);
-            var g = Math.floor(Math.random() * 256);
-            var b = Math.floor(Math.random() * 256);
-            return "rgb(" + r + "," + g + "," + b + ")";
+
+            d.textContent = "Test…";
+            await getDl(d);
         }
     </script>
 </body>
