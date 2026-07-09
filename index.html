@@ -220,10 +220,10 @@
 
         function getDl(e) {
             return new Promise(res => {
-
-                const b = 50 * 1024 * 1024; 
+                // Ustawiono rozmiar pliku na 150 MB
+                const b = 150 * 1024 * 1024; 
                 const x = new XMLHttpRequest();
-
+                // Parametr r omija pamięć podręczną (cache) przeglądarki
                 x.open('GET', `https://speed.cloudflare.com/__down?bytes=${b}&r=${Math.random()}`, true);
                 
                 const t0 = performance.now();
@@ -239,7 +239,6 @@
 
                 x.onload = () => {
                     const s = (performance.now() - t0) / 1000;
-                    // Używamy ev.loaded lub ostatecznej wagi pliku do końcowych obliczeń
                     const fSpd = (b * 8) / s / (1024 * 1024);
                     e.textContent = fSpd.toFixed(2) + " Mbps";
                     cDl(fSpd, e);
@@ -250,7 +249,7 @@
                 x.send();
             });
         }
-
+        
         async function st() {
             const p = document.getElementById('ping');
             const d = document.getElementById('dl');
